@@ -4,7 +4,7 @@
 ### Step 1 - Installing Vistrails
 
 The easiest way to install is by simple installing conda and typing 
-** conda install -c vida-nyu vistrails  ** in terminal and you will get the latest version of vistrails.
+**conda install -c vida-nyu vistrails** in terminal and you will get the latest version of vistrails.
 
 
 * For more details of installing conda see : https://conda.io/docs/user-guide/install/linux.html

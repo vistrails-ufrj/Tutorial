@@ -59,6 +59,74 @@ Here in provenance in the top-right at log details we can see if a module got an
 
 ![title](img/11.png)
 
+## Creating your own module
+
+The Vistrails’ modules are basically python modules that inherit from Module -  class defined at vistrails.core. Hence to create your own module, Vistrails demand a specific structure to integrate it on the application. 
+
+The basic structure of modules consists of two files inside the Directory named properly by the package name. 
+    __init__.py - Contains the package’s metadata
+    init.py 		- Contains the definition of the Modules’ classes
+
+This directory may contain also auxiliary python modules that complements the package.
+
+The __init__.py consists of the declaration of three basic 
+    identifier
+    name
+    version
+    
+* e.g.:__init__.py 
+    //sof 
+    identifier = 'org.vistrails.vistrails.teste'
+    name = 'Teste'
+    version = '0.0.1'
+    // eof
+
+The init.py consists of the Class declaration, the attributes _input_ports e _output_ports and the methor compute() that is mainly executed by Vistrails. Other methods can be add but this one is mandatory. The lists are described below:
+    _input_ports 	- Receives a list from the IPort function defined at vistrails.core.modules.config, whose parameter follows the pattern (name=, signature=). Name refers to a string that identify the input parameter of the module, and signature, the datatype.
+    _output_ports 	- Receives a list from the OPort function.
+
+* e.g.:init.py
+  first import vistrais modules to properly configure
+```
+    from vistrails.core.modules.vistrails_module import Module
+    from vistrails.core.modules.config import IPort, OPort
+```
+  vistrails requires an initialization
+
+    def __init__(self):
+      Module.__init__(self)
+
+  Your module must inherit from the class Module, imported above. After that, the initialization of the attributes follow the IPort definition.
+
+    class Soma(Module):
+      _input_ports = [IPort(name = "n1", signature = "basic:Float"),
+        IPort(name = 'n2', signature = "basic:Float")]
+      _output_ports = [OPort(name = "value", signature = "basic:Float")]
+
+  The method compute() as follows:
+
+    def compute(self):
+        v1  = self.get_input("n1")
+        v2 = self.get_input("n2")
+
+        self.set_output("value", self.sum(v1,v2))
+
+  Besides that, it may be necessary or preferable to use other functions
+
+    def sum(self, v1, v2):
+        return v1 + v2;
+
+
+  Finally, it is necessary to specify which modules are defined for this package. So, it is used another variable defined by Vistrails.
+
+    _modules = [Soma,]
+
+###Setting up VIstrails
+Once the files are ready, the final step is to import the package to the application. Go to Edit-> Preferences and then to the Packages tab.
+![title](img/12.png)
+The package named by the directory should appear at the Disabled list (if not, try to relaunch Vistrails). Then, enable de package and it will appear at the Packages list. 
+![title](img/13.png)
+
 
 ```python
 

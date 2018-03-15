@@ -3,8 +3,10 @@
 
 ### Step 1 - Installing Vistrails
 
+First of all install 2 packages that you probably don't have in your linux and are a must have for this, just type **pip install nose** and **pip install usagestats** on console and it should be fine.
+
 The easiest way to install is by simple installing conda and typing 
-" **conda install -c vida-nyu vistrails** " in terminal and you will get the latest version of vistrails.
+" **conda install -c vida-nyu vistrails** " in terminal and you will get the latest version of vistrails. Or you can clone the project from github **https://github.com/vistrails-ufrj/VisTrails.git** and go to vistrail folder and type python run.py and the application will run.
 
 
 * For more details of installing conda see : https://conda.io/docs/user-guide/install/linux.html
@@ -41,7 +43,7 @@ In the next module we will split the data in train and test, here at the top-lef
 Now we can connect the modules by clicking the circles and dragging to the destination, doing this it will be like :
 
 ![title](img/7.png)
-
+ 
 Adding more modules to complete our task it is going to be this : (the diamond is for trained models)
 
 ![title](img/8.png)

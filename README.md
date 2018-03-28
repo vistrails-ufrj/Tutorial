@@ -122,9 +122,12 @@ The init.py consists of the Class declaration, the attributes _input_ports e _ou
   Finally, it is necessary to specify which modules are defined for this package. So, it is used another variable defined by Vistrails.
 
     _modules = [Soma,]
-
+  
+  
 ### Setting up Vistrails
-Once the files are ready, the final step is to import the package to the application. Go to Edit-> Preferences and then to the Packages tab.
+Once the files are ready, the final step is to import the package to the application. 
+The files created must be imported into the directory 'Vistrails/vistrails/packages' inside a folder named by the package name. 
+Hence, go to Edit-> Preferences and then to the Packages tab.
 The package named by the directory should appear at the Disabled list (if not, try to relaunch Vistrails). Then, enable de package and it will appear at the Packages list. 
 ![title](img/img12.png)
 
